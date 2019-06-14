@@ -1,0 +1,57 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Translations Database plugin for Craft CMS 3.x
+ *
+ * Translations Database index.twig
+ *
+ * @author    Robin Gauthier
+ * @copyright Copyright (c) 2019 Robin Gauthier
+ * @link      https://github.com/robin-gauthier
+ * @package   TranslationsDatabase
+ * @since     1.0.0
+ */
+#}
+
+{% extends "_layouts/cp" %}
+
+{% do view.registerAssetBundle("rgauthier\\translationsdatabase\\assetbundles\\translationcpsection\\TranslationCPSectionAsset") %}
+{% set title = "Translations Database" %}
+
+{% set content %}
+<div id="rgct">
+    {# get all list from current language #}
+    {% paginate list.limit(100) as pageInfo, pageEntries %}  
+
+    {% if pageEntries|length %}
+
+        {# form module #}
+        {% include 'translations-database/admin/filters.twig' %}
+
+
+        {# form module #}
+        {% include 'translations-database/admin/form.twig' with { 
+            pageEntries : pageEntries,
+            pageInfo : pageInfo
+        } %}
+
+
+        {# pagination module #}
+        {% include 'translations-database/admin/pagination.twig' with { 
+            pageInfo : pageInfo
+        } %}
+     
+    {% else %}
+
+        {% if action == 'search_db' %}
+            {# form module #}
+            {% include 'translations-database/admin/filters.twig' %}
+        {% endif %}
+
+        {# No result#}
+        <h2>{{ "There's no translation currently available."|t('translations-database') }}</h2>
+        <p>{{ "You can try the button to extract the strings from your template."|t('translations-database') }}</p>
+    {% endif %}
+</div>
+    
+{% endset %}

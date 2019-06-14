@@ -1,0 +1,63 @@
+/**
+ * Translations Database plugin for Craft CMS
+ *
+ * Translation Field CSS
+ *
+ * @author    Robin Gauthier
+ * @copyright Copyright (c) 2019 Robin Gauthier
+ * @link      https://github.com/robin-gauthier
+ * @package   TranslationsDatabase
+ * @since     1.0.0
+ */
+ #rgct .pagination {
+    justify-content: center;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  #rgct .pagination__pages {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #rgct .pagination--numbers a {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  #rgct .pagination__pages .pagination__page {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  #rgct #links-language { margin-right:15px; padding: 10px 0;}
+  #rgct #links-language button { margin-right:10px; }
+  
+  #rgct #rgct-loading { background:rgba(0,0,0,0.8); display:none;; height:100%; width:100%; position:fixed; top:0; left:0; z-index:9999; }
+  #rgct #rgct-loading .loader { background:url(../images/squares.gif); height:120px; width:120px; position:absolute; top:40%; right:50%; }
+  
+  #rgct #notice-container { margin-top: 20px;}
+  
+  #rgct #links-language { background: white; padding: 20px; display:flex; }
+  #rgct #links-language h2 { margin-top:0; }
+  #rgct #links-language .current_lang { order: -1; }
+  #rgct #links-language .current_lang .buttons-form form { float: left; margin-bottom: 20px; }
+  #rgct #links-language .current_lang .buttons-form form button { line-height:30px; height: 30px; }
+  #rgct #links-language .current_lang .search-form button { line-height:30px; height: 30px; margin-left: 5px; }
+  #rgct #links-language .current_lang .search-form .input-search { height: 30px; width: 250px; }
+  #rgct #links-language .other_lang { margin-left:auto; order: 10; }
+  
+  #rgct #fields-container { width: 100%; }
+  #rgct #fields-container .translation_key { line-height:75px; width: 20%; max-width: 200px; }
+  #rgct #fields-container .translation_value { line-height:75px; width: 80%; }
+  #rgct #fields-container .translation_value textarea { height: 70px; width: 100%; }
+  
+  .pages .pages-container { display:flex; justify-content: center; }
+  
+  .pages .pages-container a { font-size: 16px; margin: 0 3px; text-decoration:none; }
+  .pages .pages-container a.active-page { color: black; }

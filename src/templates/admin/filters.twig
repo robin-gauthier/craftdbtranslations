@@ -1,0 +1,52 @@
+
+{% set url = '/admin/translations-database' %}
+
+<div id="links-language" >
+
+    {% for lang in craft.app.sites.getAllSites() %}
+
+        {% set url = '/admin/translations-database?lang=' ~ lang.language %}
+        {% if lang.language == currentPluginLanguage %}
+
+            <div class="current_lang">
+                <h2>{{ 'Current language'|t('translations-database') }} : <strong>{{ lang.name }}</strong></h2>
+                <div class="buttons-form">
+
+                    <!-- Crawl templates to extract strings -->
+                    <form action="/admin/translations-database/generate" method="POST">
+                        {{ csrfInput() }}
+                        <input type="hidden" name="lang" value="{{ currentPluginLanguage }}" />
+                        
+                        <button type="submit" class="button">{{ 'Extract strings from theme templates'|t('translations-database') }}</button>
+                    </form>
+                    <!-- Delete unuse database string -->
+                    <form action="/admin/translations-database/clean" method="POST">
+                        {{ csrfInput() }}
+                        <input type="hidden" name="lang" value="{{ currentPluginLanguage }}" />
+                        
+                        <button type="submit" class="button" >{{ 'Delete unused strings from list'|t('translations-database') }}</button>
+                    </form>
+                </div>
+
+                <div class="search-form">
+
+                    <form action="/admin/translations-database" method="GET">
+                        <input type="hidden" name="lang" value="{{ currentPluginLanguage }}" />
+                        <input type="hidden" name="custom_action" value="search_db" />
+
+                        <input type="text" class="input-search" name="search" placeholder="{{'Search'|t('translations-database') }}" value="{{ craft.app.request.getQueryParam('search') ? craft.app.request.getQueryParam('search') : '' }}" />
+                        
+                        <button type="submit" class="button" data-lang="{{ lang.language }}" >{{ 'Search'|t('translations-database') }}</button>
+                    </form>
+                </div>
+            </div>
+
+        {% else %}
+            <div class="other_lang">
+                <a href="{{ url }}" class="button" data-lang="{{ lang.language }}">{{ lang.name }}</a>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+    
+</div>

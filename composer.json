@@ -1,0 +1,43 @@
+{
+    "name": "rgauthier/translations-database",
+    "description": "Translate string from database key.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "translations database"
+    ],
+    "support": {
+        "docs": "https://github.com/robin-gauthier/translations-database/blob/master/README.md",
+        "issues": "https://github.com/robin-gauthier/translations-database/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robin Gauthier",
+            "homepage": "https://github.com/robin-gauthier"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "rgauthier\\translationsdatabase\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Translations Database",
+        "handle": "translations-database",
+        "hasCpSettings": false,
+        "hasCpSection": true,
+        "changelogUrl": "https://raw.githubusercontent.com/robin-gauthier/translations-database/master/CHANGELOG.md",
+        "components": {
+            "translations": "rgauthier\\translationsdatabase\\services\\Translations"
+        },
+        "class": "rgauthier\\translationsdatabase\\TranslationsDatabase"
+    }
+}

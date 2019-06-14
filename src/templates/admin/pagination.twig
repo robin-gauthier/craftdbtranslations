@@ -1,0 +1,33 @@
+{% if pageInfo.totalPages > 1 %}
+
+  {% set queryString = '' %}
+  {% if craft.app.request.queryStringWithoutPath() %}
+    {% set queryString = "?" ~ craft.app.request.queryStringWithoutPath() %}
+  {% endif %}
+
+    <div class="pagination pagination--numbers">
+        {% if pageInfo.prevUrl ? "deactivated" %}
+            <a href="{{ pageInfo.prevUrl }}{{ queryString }}" class="pagination__page" data-pajax-nofollow>
+                <span class="u-a11y-visible">{{ "Previous"|t('translations-database') }}</span>
+            </a>
+        {% endif %}
+
+        <div class="pagination__pages">
+            {% for page, url in pageInfo.getPrevUrls(2) %}
+                <a href="{{ url }}{{ queryString }}" class="pagination__page" data-pajax-nofollow>{{ page }}</a>
+            {% endfor %}
+
+            <span class="pagination__page is-active">{{ pageInfo.currentPage }}</span>
+
+            {% for page, url in pageInfo.getNextUrls(2) %}
+                <a href="{{ url }}{{ queryString }}" class="pagination__page" data-pajax-nofollow>{{ page }}</a>
+            {% endfor %}
+        </div>
+
+        {% if pageInfo.nextUrl %}
+            <a href="{{ pageInfo.nextUrl }}{{ queryString }}" class="pagination__page" data-pajax-nofollow>
+                <span class="u-a11y-visible">{{ "Next"|t('translations-database') }}</span>
+            </a>
+        {% endif %}
+    </div>
+{% endif %}

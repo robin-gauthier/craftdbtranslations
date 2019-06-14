@@ -1,0 +1,28 @@
+<form action="/admin/translations-database/save" method="POST" id="translation-form" class="form-table" cellspacing="0">
+    <input type="hidden" name="lang" value="{{ currentPluginLanguage }}" />
+    <input type="hidden" name="page" value="{{ pageInfo.currentPage }}" />
+    
+    {{ csrfInput() }}
+    <table id="fields-container">
+        <thead>
+            <th class="translation_key">{{ 'Translation key'|t('translations-database') }}</th>
+            <th class="translation_value">{{ 'Value'|t('translations-database') }}</th>
+        </thead>
+        {%- for item in pageEntries %}
+
+            <tr valign="top">
+                <th scope="row">
+                    <label>{{ item.translation_key }}</label></th>
+                <td>
+                    <textarea name="form[{{ item.id }}]" cols="100" rows="3">{{ item.value }}</textarea>
+                </td>
+            </tr>
+
+        {%- endfor %}
+
+    </table>
+
+    <p class="submit">
+        <input type="submit" id="submit" class="button button-primary" value="{{ 'Save'|t('translations-database') }}">
+    </p>
+</form>
